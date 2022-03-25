@@ -7,7 +7,7 @@ function Li(props) {
     const underline = props.on ? 'underline' : '';
     const content = props.button ? <Button variant="contained">{props.label}</Button> : props.label;
     return (
-        <li className={`text-white list-none inline-block mx-12 text ${underline}`}><Link to={props.to}>{content}</Link></li>
+        <li className={`text-white ${underline}`}><Link to={props.to}>{content}</Link></li>
     )
 }
 
@@ -17,9 +17,9 @@ function Nav(props) {
             <div className="text-white mr-3">
                 <FaMapMarkerAlt size={40} />
             </div>
-            <ul className="w-1/2">
-                {props.lis.map(li => {
-                    return <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+            <ul className="w-1/2 flex justify-around items-center">
+                {props.lis.map((li, i)=> {
+                    return <Li label={li.title} on={li.on} button={li.button} to={li.to} key={`select-${i}`}/>
                 })}
             </ul>
         </nav>
