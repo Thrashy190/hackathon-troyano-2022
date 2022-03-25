@@ -42,17 +42,17 @@ function Nav() {
 
       {estado === "Anonimo" ? (
         <ul className="w-1/2">
-          {lis.map((li) => {
+          {lis.map((li, i) => {
             return (
-              <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+              <Li label={li.title} on={li.on} button={li.button} to={li.to} key={`li-${i}`}/>
             );
           })}
         </ul>
       ) : (
         <ul className="w-1/2">
-          {lisActiveUser.map((li) => {
+          {lisActiveUser.map((li, i) => {
             return (
-              <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+              <Li label={li.title} on={li.on} button={li.button} to={li.to} key={`li-${i}`}/>
             );
           })}
         </ul>
