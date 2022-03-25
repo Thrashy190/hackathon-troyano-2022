@@ -13,7 +13,9 @@ const LoginComponent = () => {
         <div>Bienvenido de vuelta</div>
         <TextField id="outlined-basic" label="Outlined" variant="outlined" />
         <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        <Button variant="contained">Contained</Button>
+        <Button variant="contained" color="">
+          Contained
+        </Button>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { useAuth } from "../../contexts/authContext";
 
 function Li(props) {
   const underline = props.on ? "underline" : "";
@@ -18,6 +19,8 @@ function Li(props) {
 }
 
 function Nav() {
+  const { currentUser } = useAuth();
+
   const lis = [
     { title: "Foros", on: true, button: false, to: "/foros" },
     { title: "Universidades", on: false, button: false, to: "/universidades" },
@@ -36,13 +39,24 @@ function Nav() {
       <div className="text-white mr-3">
         <FaMapMarkerAlt size={40} />
       </div>
-      <ul className="w-1/2">
-        {lis.map((li) => {
-          return (
-            <Li label={li.title} on={li.on} button={li.button} to={li.to} />
-          );
-        })}
-      </ul>
+
+      {currentUser === "Anonimo" ? (
+        <ul className="w-1/2">
+          {lis.map((li) => {
+            return (
+              <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+            );
+          })}
+        </ul>
+      ) : (
+        <ul className="w-1/2">
+          {lisActiveUser.map((li) => {
+            return (
+              <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+            );
+          })}
+        </ul>
+      )}
     </nav>
   );
 }
