@@ -94,6 +94,16 @@ export const AuthProvider = ({ children }) => {
     resetPassword,
   };
 
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        var uid = user.uid;
+        setCurrentUser(uid);
+      } else {
+      }
+    });
+  });
+
   return (
     <Fragment>
       <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
