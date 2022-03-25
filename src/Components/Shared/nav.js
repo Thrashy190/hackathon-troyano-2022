@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { useAuth } from "../../contexts/authContext";
+// import { useAuth } from "../../contexts/authContext";
 
 function Li(props) {
   const underline = props.on ? "underline" : "";
   const content = props.button ? (
-    <Button variant="contained">{props.label}</Button>
+    <Button variant="contained" color="neutral">
+      {props.label}
+    </Button>
   ) : (
     props.label
   );
   return (
-    <li className={`text-white list-none inline-block mx-12 text ${underline}`}>
+    <li className={`text-white list-none inline-block mx-5 text ${underline}`}>
       <Link to={props.to}>{content}</Link>
     </li>
   );
 }
 
 function Nav() {
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
+  const [estado, setestado] = useState("Anonimo");
 
   const lis = [
     { title: "Foros", on: true, button: false, to: "/foros" },
@@ -40,8 +43,8 @@ function Nav() {
         <FaMapMarkerAlt size={40} />
       </div>
 
-      {currentUser === "Anonimo" ? (
-        <ul className="w-1/2">
+      {estado === "Anonimo" ? (
+        <ul className="w-3/4 flex justify-end items-center">
           {lis.map((li) => {
             return (
               <Li label={li.title} on={li.on} button={li.button} to={li.to} />
@@ -49,7 +52,7 @@ function Nav() {
           })}
         </ul>
       ) : (
-        <ul className="w-1/2">
+        <ul className="w-3/4 flex justify-end items-center">
           {lisActiveUser.map((li) => {
             return (
               <Li label={li.title} on={li.on} button={li.button} to={li.to} />

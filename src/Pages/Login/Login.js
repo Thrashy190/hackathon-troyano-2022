@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-
-import "./LoginStyle.css";
 import Nav from "../../Components/Shared/nav";
 import LoginComponent from "../../Components/Login/Login/LoginComponent";
-//import RegisterComponent from "../../Components/Login/Login/RegisterComponent";
+import RegisterComponent from "../../Components/Login/Register/RegisterComponent";
 
 const Login = () => {
-  const [view, setView] = useState("login");
+  const [viewLogin, setViewLogin] = useState(true);
 
   return (
     <div>
       <Nav />
-      {view === "login" ? <LoginComponent /> : <div></div>}
+      {viewLogin ? (
+        <LoginComponent setViewLogin={setViewLogin} />
+      ) : (
+        <RegisterComponent setViewLogin={setViewLogin} />
+      )}
     </div>
   );
 };
