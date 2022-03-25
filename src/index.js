@@ -28,10 +28,10 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Foro />} />
-        <Route path="inicio" element={<Foro />} />
-        <Route path="listas" />
-        <Route path="login" element={<Login />} />
-        <Route path="roadmap" />
+        <Route path="/foros" element={<Foro />} />
+        <Route path="/universidades" />
+        <Route path="/login" element={<Login />} />
+        <Route path="/roadmap" />
         <Route path="/perfil" element={<User />} />
         <Route path="/config" element={<Config />} />
         <Route path="*" />
