@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./index.css";
 //import { AuthProvider } from "./contexts/authContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import "./index.css";
 import Foro from "./Components/Foro/index.js";
 import User from "./Components/User/index.js";
 import Config from "./Components/User/config.js";
@@ -23,6 +23,7 @@ const theme = createTheme({
     },
   },
 });
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <BrowserRouter>
@@ -31,6 +32,7 @@ ReactDOM.render(
         <Route path="/foros" element={<Foro />} />
         <Route path="/universidades" />
         <Route path="/login" element={<Login />} />
+        <Route path="/registrar" element={<Login />} />
         <Route path="/roadmap" />
         <Route path="/perfil" element={<User />} />
         <Route path="/config" element={<Config />} />
