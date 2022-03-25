@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 //import { AuthProvider } from "./contexts/authContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Foro from "./Components/Foro/index.js";
-import User from "./Components/User/index.js";
-import Config from "./Components/User/config.js";
+import "./index.css";
+import Foro from "./Pages/Foro/foro.js";
+import User from "./Pages/User/perfil.js";
+import Config from "./Pages/User/config.js";
 import Login from "./Pages/Login/Login";
 
 const theme = createTheme({
