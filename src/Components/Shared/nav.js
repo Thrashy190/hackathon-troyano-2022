@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { useAuth } from "../../contexts/authContext";
+// import { useAuth } from "../../contexts/authContext";
 
 function Li(props) {
   const underline = props.on ? "underline" : "";
@@ -19,8 +19,8 @@ function Li(props) {
 }
 
 function Nav() {
-  const { currentUser } = useAuth();
-
+//   const { currentUser } = useAuth();
+    const estado = "Anonimo";
   const lis = [
     { title: "Foros", on: true, button: false, to: "/foros" },
     { title: "Universidades", on: false, button: false, to: "/universidades" },
@@ -40,7 +40,7 @@ function Nav() {
         <FaMapMarkerAlt size={40} />
       </div>
 
-      {currentUser === "Anonimo" ? (
+      {estado === "Anonimo" ? (
         <ul className="w-1/2">
           {lis.map((li) => {
             return (
