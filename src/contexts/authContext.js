@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
             console.error(error);
             setNotify({
               isOpen: true,
-              message: error.message,
+              message: "Hubo un error al crear usuario",
               type: "error",
             });
           });
@@ -56,9 +56,48 @@ export const AuthProvider = ({ children }) => {
   //Actalizar informacion del usuario
   const updateUser = () => {};
   //Iniciar sesion
-  const logIn = () => {};
+  const logIn = (userInfo) => {
+    return auth
+      .signInWithEmailAndPassword(userInfo.email, userInfo.password)
+      .then((userCredential) => {
+        setCurrentUser(userCredential.user);
+        auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+        setNotify({
+          isOpen: true,
+          message: "Se inició sesión correctamente",
+          type: "success",
+        });
+      })
+      .catch((error) => {
+        setNotify({
+          isOpen: true,
+          message: "Hubo un error al iniciar sesion intentalo mas tarde",
+          type: "error",
+        });
+      });
+  };
+
   //Cerrar sesion
-  const logOut = () => {};
+  const logOut = () => {
+    return auth
+      .signOut()
+      .then(() => {
+        setCurrentUser("Anonimo");
+        setNotify({
+          isOpen: true,
+          message: "Sesión terminada correctamente",
+          type: "success",
+        });
+        logOutUser();
+      })
+      .catch(() => {
+        setNotify({
+          isOpen: true,
+          message: "Error al momento de cerrar sesión intentalo mas tarde",
+          type: "error",
+        });
+      });
+  };
   //reiniciar contraseña
   const resetPassword = (email) => {
     auth
@@ -89,20 +128,24 @@ export const AuthProvider = ({ children }) => {
   const fetchForumList = () => {};
   const getForumData = () => {};
 
-  const value = {
-    signUpUser,
-    resetPassword,
-  };
-
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        var uid = user.uid;
-        setCurrentUser(uid);
+        setCurrentUser(user.uid);
       } else {
+        setCurrentUser("Anonimo");
       }
     });
   });
+
+  const value = {
+    currentUser,
+    signUpUser,
+    updateUser,
+    resetPassword,
+    logIn,
+    logOut,
+  };
 
   return (
     <Fragment>
