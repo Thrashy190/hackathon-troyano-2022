@@ -1,29 +1,64 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { useAuth } from "../../contexts/authContext";
 
 function Li(props) {
-    const underline = props.on ? 'underline' : '';
-    const content = props.button ? <Button variant="contained">{props.label}</Button> : props.label;
-    return (
-        <li className={`text-white ${underline}`}><Link to={props.to}>{content}</Link></li>
-    )
+  const underline = props.on ? "underline" : "";
+  const content = props.button ? (
+    <Button variant="contained">{props.label}</Button>
+  ) : (
+    props.label
+  );
+  return (
+    <li className={`text-white list-none inline-block mx-12 text ${underline}`}>
+      <Link to={props.to}>{content}</Link>
+    </li>
+  );
 }
 
-function Nav(props) {
-    return (
-        <nav className="w-full h-20 bg-indigo-600 flex justify-around items-center">
-            <div className="text-white mr-3">
-                <FaMapMarkerAlt size={40} />
-            </div>
-            <ul className="w-1/2 flex justify-around items-center">
-                {props.lis.map((li, i)=> {
-                    return <Li label={li.title} on={li.on} button={li.button} to={li.to} key={`select-${i}`}/>
-                })}
-            </ul>
-        </nav>
-    )
+function Nav() {
+  const { currentUser } = useAuth();
+
+  const lis = [
+    { title: "Foros", on: true, button: false, to: "/foros" },
+    { title: "Universidades", on: false, button: false, to: "/universidades" },
+    { title: "Registro", on: false, button: true, to: "/signin" },
+    { title: "Inicio de Sesión", on: false, button: false, to: "/login" },
+  ];
+
+  const lisActiveUser = [
+    { title: "Foros", on: true, button: false, to: "/foros" },
+    { title: "Universidades", on: false, button: false, to: "/universidades" },
+    { title: "Perfil", on: false, button: true, to: "/" },
+  ];
+
+  return (
+    <nav className="w-full h-20 bg-indigo-600 flex justify-around items-center">
+      <div className="text-white mr-3">
+        <FaMapMarkerAlt size={40} />
+      </div>
+
+      {currentUser === "Anonimo" ? (
+        <ul className="w-1/2">
+          {lis.map((li) => {
+            return (
+              <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+            );
+          })}
+        </ul>
+      ) : (
+        <ul className="w-1/2">
+          {lisActiveUser.map((li) => {
+            return (
+              <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+            );
+          })}
+        </ul>
+      )}
+    </nav>
+  );
 }
 
 export default Nav;
