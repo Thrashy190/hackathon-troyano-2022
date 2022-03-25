@@ -1,6 +1,5 @@
 import React from "react";
-import Nav from '../Shared/nav';
-import ForumElement from '../Shared/forumElement';
+import Nav from '../../Components/Shared/nav';
 import { FaUserAlt, FaChevronLeft } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
