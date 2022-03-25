@@ -4,8 +4,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./index.css";
+import Foro from "./Components/Foro/index.js";
+import User from "./Components/User/index.js";
+import Config from "./Components/User/config.js";
 import Login from "./Pages/Login/Login";
-import Nav from "./Components/Shared/nav";
 
 const theme = createTheme({
   palette: {
@@ -21,24 +23,20 @@ const theme = createTheme({
     },
   },
 });
-
 ReactDOM.render(
-  // <AuthProvider>
   <ThemeProvider theme={theme}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" />
-        {/* Incluimos un elemento para renderizar con esa ruta */}
-        <Route path="inicio" />
+        <Route path="/" element={<Foro />} />
+        <Route path="inicio" element={<Foro />} />
         <Route path="listas" />
         <Route path="login" element={<Login />} />
         <Route path="roadmap" />
-        <Route path="perfil" />
+        <Route path="/perfil" element={<User />} />
+        <Route path="/config" element={<Config />} />
         <Route path="*" />
-        {/*Esta ruta funciona para la captura de todo lo no definido en el Router */}
       </Routes>
     </BrowserRouter>
   </ThemeProvider>,
-  // </AuthProvider>,
   document.getElementById("root")
 );

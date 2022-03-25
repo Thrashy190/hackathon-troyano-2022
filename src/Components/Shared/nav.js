@@ -44,18 +44,30 @@ function Nav() {
       </div>
 
       {estado === "Anonimo" ? (
-        <ul className="w-3/4 flex justify-end items-center">
-          {lis.map((li) => {
+        <ul className="w-3/4 flex justify-end">
+          {lis.map((li, i) => {
             return (
-              <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+              <Li
+                label={li.title}
+                on={li.on}
+                button={li.button}
+                to={li.to}
+                key={`li-${i}`}
+              />
             );
           })}
         </ul>
       ) : (
-        <ul className="w-3/4 flex justify-end items-center">
-          {lisActiveUser.map((li) => {
+        <ul className="w-3/4 flex justify-end">
+          {lisActiveUser.map((li, i) => {
             return (
-              <Li label={li.title} on={li.on} button={li.button} to={li.to} />
+              <Li
+                label={li.title}
+                on={li.on}
+                button={li.button}
+                to={li.to}
+                key={`li-${i}`}
+              />
             );
           })}
         </ul>

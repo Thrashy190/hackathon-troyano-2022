@@ -75,8 +75,8 @@ function Foro(props) {
                         <Search />
                         <div className="p-5 flex justify-center items-center flex-col">
                             {
-                                fE.map(info => {
-                                    return <ForumElement info={info}/>
+                                fE.map((info, i) => {
+                                    return <ForumElement info={info} key={`key-${i}`}/>
                                 })
                             }
                         </div>
