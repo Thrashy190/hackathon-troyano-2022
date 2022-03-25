@@ -5,8 +5,22 @@ import "./index.css";
 import App from "./App";
 import Foro from "./Components/Foro/index.js";
 
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#5D6BE4',
+    },
+    secondary: {
+      main: '#3B3D78',
+    },
+  },
+});
+
 ReactDOM.render(
-  <BrowserRouter>
+  <ThemeProvider theme={theme}>
+    <BrowserRouter>
     <Routes>
       <Route path="/" element={<Foro/>}/>
       <Route path="inicio" element={<Foro />}/>
@@ -16,6 +30,7 @@ ReactDOM.render(
       <Route path="perfil"/>
       <Route path="*"/>
     </Routes>
-  </BrowserRouter>,
+  </BrowserRouter>
+  </ThemeProvider>,
   document.getElementById("root")
 );
