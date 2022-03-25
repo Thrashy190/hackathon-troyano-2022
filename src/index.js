@@ -3,15 +3,16 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Login from "./Pages/Login/Login";
+import Nav from "./Components/Shared/nav";
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={Login} />
+      <Route path="/" />
       {/* Incluimos un elemento para renderizar con esa ruta */}
       <Route path="inicio" />
       <Route path="listas" />
-      <Route path="login" />
+      <Route path="login" element={<Login />} />
       <Route path="roadmap" />
       <Route path="perfil" />
       <Route path="*" />
