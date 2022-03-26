@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import Foro from "./Components/Foro/index.js";
+import LandigPage from "./Pages/LandingPage/LandingPage"
+import LandingPage from "./Pages/LandingPage/LandingPage";
 
 // import { AuthProvider } from './Contexts/AuthContext';
 // import { createTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -23,7 +25,7 @@ ReactDOM.render(
     // <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Foro />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="inicio" element={<Foro />} />
           <Route path="listas" />
           <Route path="login" />
