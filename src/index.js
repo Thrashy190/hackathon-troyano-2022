@@ -27,19 +27,25 @@ const theme = createTheme({
   },
 });
 
+fetch('https://firestore.googleapis.com/v1/projects/hackathon-2022-b997c/databases/(default)/documents/users/fEoMql2cKqit7ztivHEK')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Foro />} />
         <Route path="/foros" element={<Foro />} />
-        <Route path="/universidades" element={<Universidades />}/>
+        <Route path="/universidades" element={<Universidades />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registrar" element={<Login />} />
-        <Route path="/roadmap" element={<RoadMap />}/>
+        <Route path="/roadmap" element={<RoadMap />} />
         <Route path="/perfil" element={<User />} />
         <Route path="/config" element={<Config />} />
-        <Route path="*" element={<NM />}/>
+        <Route path="*" element={<NM />} />
       </Routes>
     </BrowserRouter>
   </ThemeProvider>,
