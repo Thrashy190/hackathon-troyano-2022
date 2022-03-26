@@ -95,7 +95,7 @@ function Universidades(props) {
   }, []);
 
   return (
-    <div className="w-screen h-full flex bg-white flex-col">
+    <div className="w-full h-full flex bg-white flex-col overflow-x-hidden">
       <Nav />
       <div className="flex items-center flex-col">
         <div className="w-[80%] h-16 border-[1px] border-gray-400 mt-4 rounded-xl flex justify-around items-center">
@@ -104,7 +104,7 @@ function Universidades(props) {
           <Button variant="contained" color="primary">Buscar</Button>
         </div>
         <div className="w-[80%] h-full mt-4">
-          <div className="grid grid-cols-5 grid-rows-3 gap-6">
+          <div className="grid grid-cols-5 grid-rows-3 gap-6 mb-6">
             {
               universidades.map((uni, i) => {
                 return <div

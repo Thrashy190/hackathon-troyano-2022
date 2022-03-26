@@ -135,7 +135,7 @@ function Foro(props) {
   }
 
   return (
-    <div className="w-screen h-full flex bg-white flex-col">
+    <div className="w-full h-full flex bg-white flex-col">
       <Nav />
       <div className="mx-10 my-5 grid grid-cols-[66%_33%] grid-rows-1 h-full">
         <div className="flex flex-col">

@@ -35,7 +35,7 @@ function User() {
     ]
 
     return (
-        <div className="w-screen h-full flex bg-white flex-col">
+        <div className="w-full h-full flex bg-white flex-col">
             <Nav />
             <div className="w-full h-full flex justify-center items-center">
                 <div className="mt-5 w-3/4 flex justify-center items-center flex-col">

@@ -77,7 +77,7 @@ function User() {
 
     const inputs = [['Universidad', uni, uniF, setUniF], ['Carrera', career, careerF, setCareerF]]
     return (
-        <div className="w-screen h-full flex bg-white flex-col">
+        <div className="w-full h-full flex bg-white flex-col">
             <Nav />
             <div className="w-full h-full flex justify-center items-center">
                 <div className="w-3/4 h-full flex justify-center items-center flex-col">
