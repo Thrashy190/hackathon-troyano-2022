@@ -36,6 +36,7 @@ ReactDOM.render(
         <Route path="/" element={<LandingPage />} />
         <Route path="/foros" element={<Foro />} />
         <Route path="/universidades" element={<Universidades />} />
+        <Route path="/mensajes" element={<MessagesForum />} />
         <Route path="/roadmap" element={<RoadMap />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registrar" element={<Login />} />

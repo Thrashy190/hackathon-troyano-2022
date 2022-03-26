@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Nav from "../../Components/Shared/nav";
 import Button from "@mui/material/Button";
 import { FaSearch } from "react-icons/fa";
@@ -54,7 +55,10 @@ function Search(props) {
 
 function ForumElement(props) {
   return (
-    <div className="h-40 w-full my-5 border-2 border-gray-400 rounded-xl p-5">
+    <Link
+      className="h-40 w-full my-5 border-2 border-gray-400 rounded-xl p-5"
+      to="/mensajes"
+    >
       <h1 className="text-3xl text-indigo-900 mb-2">{props.info.title}</h1>
       <div className="grid grid-cols-[66%_33%] grid-rows-1 text-indigo-900 font-bold">
         <div>
@@ -67,7 +71,7 @@ function ForumElement(props) {
           <h2>Respuestas: {props.info.r}</h2>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -126,12 +130,15 @@ function Foro(props) {
 
   function handleChange(e) {
     console.log(e.target.value);
-    setRes(fE.filter(el => el.title.toLowerCase().includes(e.target.value.toLowerCase())));
+    setRes(
+      fE.filter((el) =>
+        el.title.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    );
   }
 
   function handleFilter(e) {
-    
-    setRes(fE.filter(el => el[e.target.name].includes(e.target.value)));
+    setRes(fE.filter((el) => el[e.target.name].includes(e.target.value)));
   }
 
   return (
@@ -143,7 +150,7 @@ function Foro(props) {
             ¿Sobre que te gustaría hablar hoy?
           </h1>
           <div className="w-full">
-            <Search handler={handleChange}/>
+            <Search handler={handleChange} />
             <div className="p-5 flex justify-center items-center flex-col">
               {res.map((info, i) => {
                 return <ForumElement info={info} key={`key-${i}`} />;

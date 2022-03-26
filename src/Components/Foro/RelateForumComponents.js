@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ForumCard = ({ item, key }) => {
   return (
-    <div
+    <Link
       className="border-2 border-gray-400 rounded-xl flex flex-col mx-4 my-3"
       key={`forumCard-${key}`}
+      to="/mensajes"
     >
       <div className="text-indigo-900 text-2xl mt-2 font-bold flex justify-center">
         {item.title}
@@ -14,7 +16,7 @@ const ForumCard = ({ item, key }) => {
         <div className="text-base ">{item.c}</div>
         <div className="text-base">{item.a}</div>
       </div>
-    </div>
+    </Link>
   );
 };
 

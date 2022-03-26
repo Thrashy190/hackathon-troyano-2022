@@ -26,6 +26,31 @@ function Li(props) {
 }
 
 function Nav() {
+  let logged = false;
+  const [log, setLogged] = useState(logged);
+
+  fetch(
+    "https://securetoken.googleapis.com/v1/token?key=AIzaSyAivt1eo738_e4s4tSdrvh8ovBhZcNMmK8",
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        grant_type: "refresh_token",
+        refresh_token: localStorage.getItem("key"),
+      }),
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log(data);
+      if (data.id_token != undefined) {
+        setLogged(true);
+      }
+    });
+
   // const { currentUser } = useAuth();
   const [estado, setestado] = useState("Anonimo");
 
@@ -49,7 +74,7 @@ function Nav() {
       </div>
 
       <div className="bg-indigo-600 w-[60%] h-full flex item-center justify-end">
-        {estado === "Anonimo" ? (
+        {log === false ? (
           <ul className="w-3/4 flex justify-end items-center mr-20 ">
             {lis.map((li, i) => {
               return (
