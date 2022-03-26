@@ -75,6 +75,10 @@ function Foro(props) {
         { title: 'profe dieGOD', u: 'UAQ', c: 'Informática', a: 'Progra', lI: '8h', r: 223 },
     ]
 
+    function handleFilter() {
+
+    }
+
     return (
         <div className="w-screen h-full flex bg-white flex-col">
             <Nav />
@@ -82,7 +86,7 @@ function Foro(props) {
                 <div className="flex flex-col">
                     <h1 className="text-4xl font-bold text-indigo-900 mb-10">¿Sobre que te gustaría hablar hoy?</h1>
                     <div className="w-full">
-                        <Search />
+                        <Search handler={handleFilter}/>
                         <div className="p-5 flex justify-center items-center flex-col">
                             {
                                 fE.map((info, i) => {
