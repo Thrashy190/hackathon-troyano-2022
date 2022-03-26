@@ -10,6 +10,7 @@ import Config from "./Pages/User/config.js";
 import Login from "./Pages/Login/Login";
 import Universidades from "./Pages/Listas/universidades.js"
 import NM from "./Pages/Otros/404.js";
+import RoadMap from "./Pages/RoadMap/index.js"
 
 const theme = createTheme({
   palette: {
@@ -35,7 +36,7 @@ ReactDOM.render(
         <Route path="/universidades" element={<Universidades />}/>
         <Route path="/login" element={<Login />} />
         <Route path="/registrar" element={<Login />} />
-        <Route path="/roadmap" />
+        <Route path="/roadmap" element={<RoadMap />}/>
         <Route path="/perfil" element={<User />} />
         <Route path="/config" element={<Config />} />
         <Route path="*" element={<NM />}/>

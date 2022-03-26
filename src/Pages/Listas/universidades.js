@@ -83,7 +83,6 @@ function Universidades(props) {
         p: 6,
     };
 
-
     return (
         <div className="w-screen h-full flex bg-white flex-col">
             <Nav />
