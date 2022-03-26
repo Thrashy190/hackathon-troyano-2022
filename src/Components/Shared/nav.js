@@ -37,7 +37,8 @@ function Nav() {
   })
   .then(res => res.json())
   .then(data => {
-    console.log(data.id_token != undefined);
+    localStorage.setItem('uid', data.user_id);
+    // console.log(data);
     if (data.id_token != undefined) {
       setLogged(true);
     }

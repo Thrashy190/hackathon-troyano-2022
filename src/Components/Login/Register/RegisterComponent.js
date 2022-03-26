@@ -39,6 +39,9 @@ const RegisterComponent = ({ setViewLogin }) => {
         }
         else {
           localStorage.setItem('key', data.refreshToken);
+          localStorage.setItem('uid', data.user_id);
+
+          // fetch('https://firestore.googleapis.com/v1/projects/hackathon-2022-b997c/databases/(default)/documents/users/')
           window.location.href = "/";
         }
       })

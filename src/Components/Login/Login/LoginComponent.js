@@ -40,7 +40,7 @@ const LoginComponent = ({ setViewLogin }) => {
         }
         else {
           localStorage.setItem('key', data.refreshToken);
-          window.location.href = "/";
+          // window.location.href = "/";
         }
       })
   }
