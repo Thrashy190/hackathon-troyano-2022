@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./index.css";
 import Foro from "./Pages/Foro/foro.js";
+import LandingPage from "./Pages/LandingPage/LandingPage.js";
 import User from "./Pages/User/perfil.js";
 import Config from "./Pages/User/config.js";
 import Login from "./Pages/Login/Login";
@@ -32,7 +33,7 @@ ReactDOM.render(
   <ThemeProvider theme={theme}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Foro />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/foros" element={<Foro />} />
         <Route path="/mensajes" element={<MessagesForum />} />
         <Route path="/universidades" element={<Universidades />} />

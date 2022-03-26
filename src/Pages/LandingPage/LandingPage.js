@@ -5,7 +5,7 @@ import RoadMap from "../../Assets/RoadMap.png"
 import Foto1 from "../../Assets/Foto1.png"
 import Foto2 from "../../Assets/Foto2.png"
 import Logo from "../../Assets/Logo.png"
-import Nav from "../../Components/Shared/nav";
+import NavLanding from "../../Components/LandigPage/NavLanding";
 import CarouselCard from "../../Components/LandigPage/CarouselCard";
 
 const LandingPage = () => {
@@ -17,7 +17,7 @@ const LandingPage = () => {
             <div className="w-full h-full flex justify-center items-strech bg-white" >
                 <div className="w-2/5 h-full space-y-6 items-center flex-col bg-white">
                     <h1 className="font-bold text-[2vw] text-center text-indigo-900 mt-[40%]">Conoce tu universidad <br/>desde dentro</h1>
-                    <div className="ml-[80px]">
+                    <div className="ml-[16%]">
                         <SearchButton></SearchButton>
                     </div>
                     <h3 className="font-medium text-sm text-center text-indigo-900">¿No encuentras tu universidad?</h3>
@@ -25,7 +25,7 @@ const LandingPage = () => {
                     Crea tu propio camino aquí</h3>
                 </div>
                 <div className="w-3/5 h-full flex justify-start flex-col bg-indigo-600">
-                    <Nav></Nav>
+                    <NavLanding></NavLanding>
                     <img src={Morra} className="w-[92%] h-[41vw] justify-self-start rounded-tr-[70px] rounded-br-[70px] mt-[4%]"></img>
                 </div>
             </div>
