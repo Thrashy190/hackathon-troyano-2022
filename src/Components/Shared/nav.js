@@ -27,7 +27,7 @@ function Nav() {
   const lis = [
     { title: "Foros", on: true, button: false, to: "/foros" },
     { title: "Universidades", on: false, button: false, to: "/universidades" },
-    { title: "Registro", on: false, button: true, to: "/signin" },
+    { title: "Registro", on: false, button: true, to: "/login" },
     { title: "Inicio de Sesión", on: false, button: false, to: "/login" },
   ];
 
