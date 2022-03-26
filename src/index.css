@@ -6,4 +6,16 @@
   .list-item {
     @apply text-teal-600 font-semibold text-xl inline-block m-0 mx-2;
   }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-300 rounded-md;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-indigo-500 rounded-md;
+  }
 }

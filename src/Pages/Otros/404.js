@@ -6,7 +6,7 @@ export default function Page() {
 
     return (
         <div
-            className="w-screen h-screen flex justify-center items-center flex-col"
+            className="w-full h-full flex justify-center items-center flex-col"
         >
             <div
                 className='w-full flex justify-center items-center mb-3'

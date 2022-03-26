@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -21,8 +21,27 @@ function Li(props) {
 }
 
 function Nav() {
-  // const { currentUser } = useAuth();
-  const [estado, setestado] = useState("Anonimo");
+  let logged = false;
+  const [log, setLogged] = useState(logged);
+
+  fetch('https://securetoken.googleapis.com/v1/token?key=AIzaSyAivt1eo738_e4s4tSdrvh8ovBhZcNMmK8', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      grant_type: 'refresh_token',
+      refresh_token: localStorage.getItem('key'),
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    // console.log(data);
+    if (data.id_token != undefined) {
+      setLogged(true);
+    }
+  })
 
   const lis = [
     { title: "Foros", on: true, button: false, to: "/foros" },
@@ -43,7 +62,7 @@ function Nav() {
         <FaMapMarkerAlt size={40} />
       </div>
 
-      {estado === "Anonimo" ? (
+      {(log === false) ? (
         <ul className="w-3/4 flex justify-end items-center">
           {lis.map((li, i) => {
             return (
