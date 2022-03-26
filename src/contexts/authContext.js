@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import firebase, { auth, db, firebaseErrorCodes } from "../Utilities/Firebase";
+import { auth, db } from "../utilities/firebase";
 import { Fragment } from "react";
 import Notification from "../Helpers/Notification";
 
@@ -10,6 +10,12 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   //Aqui se almacenara los datos e informacion que esta logeado en la sesion
   const [currentUser, setCurrentUser] = useState();
+
+  const logOutUser = () => {
+    return {
+      type: "LOGOUT_USER",
+    };
+  };
 
   //Notificaciones de firebase creations
   const [notify, setNotify] = useState({
@@ -61,7 +67,7 @@ export const AuthProvider = ({ children }) => {
       .signInWithEmailAndPassword(userInfo.email, userInfo.password)
       .then((userCredential) => {
         setCurrentUser(userCredential.user);
-        auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+        auth.setPersistence(auth.Auth.Persistence.LOCAL);
         setNotify({
           isOpen: true,
           message: "Se inició sesión correctamente",
