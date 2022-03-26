@@ -3,28 +3,47 @@ import Nav from "../../Components/Shared/nav";
 import Button from "@mui/material/Button";
 import { FaSearch } from "react-icons/fa";
 
-function Select(props) {
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+
+function Clect(props) {
   return (
-    <select className="h-12 w-[80%] my-6 border-2 border-indigo-600 rounded-md">
-      <option disabled selected>
-        {props.def}
-      </option>
-      {props.options.map((option, i) => {
-        return <option key={`option-${i}`}>{option}</option>;
-      })}
-    </select>
+    // </select>
+    <div className="my-6 w-full flex justify-center">
+      <FormControl sx={{ width: "80%" }} variant="outlined">
+        <InputLabel id="demo-simple-select-label">{props.def}</InputLabel>
+        <Select
+          label={props.def}
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+        >
+          {props.options.map((option, i) => {
+            return (
+              <MenuItem value={option} key={`option-${i}`}>
+                {option}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
+    </div>
   );
 }
 
 function Search(props) {
   return (
-    <div className="h-9 w-full flex justify-start">
-      <div className="h-8 w-8 flex justify-center items-center mr-4">
+    <div className="h-12 w-full flex justify-start">
+      <div className="h-12 w-12 flex justify-center items-end mr-4 text-indigo-600">
         <FaSearch size={25} />
       </div>
-      <input
-        className="h-8 w-2/3 border-2 border-indigo-600 rounded-md inline-block pl-2"
-        placeholder="Buscar"
+      <TextField
+        sx={{ width: "66%" }}
+        id="input-with-sx"
+        label="Buscar"
+        variant="standard"
       />
     </div>
   );
@@ -117,11 +136,11 @@ function Foro(props) {
             </div>
           </div>
         </div>
-        <div className="border-2 border-gray-400 rounded-xl flex justify-center items-center flex-col h-[35rem]">
+        <div className="border-2 border-gray-400 rounded-xl flex justify-center items-center flex-col h-[30rem]">
           <h1 className="text-4xl font-bold text-indigo-900">Filtros</h1>
           {selects.map((select, i) => {
             return (
-              <Select
+              <Clect
                 def={select.def}
                 options={select.options}
                 key={`select-${i}`}

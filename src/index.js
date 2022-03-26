@@ -9,6 +9,9 @@ import User from "./Pages/User/perfil.js";
 import Config from "./Pages/User/config.js";
 import Login from "./Pages/Login/Login";
 import MessagesForum from "./Pages/Foro/MessageForum";
+import RoadMap from "./Pages/RoadMap/RoadMapPage";
+import Universidades from "./Pages/Listas/universidades.js";
+import NM from "./Pages/Otros/404.js";
 
 const theme = createTheme({
   palette: {
@@ -32,13 +35,13 @@ ReactDOM.render(
         <Route path="/" element={<Foro />} />
         <Route path="/foros" element={<Foro />} />
         <Route path="/mensajes" element={<MessagesForum />} />
-        <Route path="/universidades" />
+        <Route path="/universidades" element={<Universidades />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/roadmap" element={<RoadMap />} />
         <Route path="/registrar" element={<Login />} />
-        <Route path="/roadmap" />
         <Route path="/perfil" element={<User />} />
         <Route path="/config" element={<Config />} />
-        <Route path="*" />
+        <Route path="*" element={<NM />} />
       </Routes>
     </BrowserRouter>
   </ThemeProvider>,
