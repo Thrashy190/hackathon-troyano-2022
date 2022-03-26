@@ -2,6 +2,7 @@ import React from 'react';
 import { MarkerType } from 'react-flow-renderer';
 
 const getFlowItems = (data) => {
+  console.log(data);
   const { roadMap, name } = data;
 
   const nodes = [];

@@ -1,7 +1,22 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+
+function TableElement(props) {
+  return (
+      <div className='mb-4'>
+          <h1 className="text-indigo-900 font-bold text-2xl">{props.src.title}</h1>
+          <h2 className="text-indigo-600 font-medium"><a href={props.src.href}>{props.src.href}</a></h2>
+      </div>
+  )
+}
+
+const srcs = [
+  {title: 'Introducción', href: "https://ciscoacademy/introduccion.html"},
+  {title: 'Redes I', href: "https://ciscoacademy/redes.html"},
+  {title: '¿Qué son las redes?', href: "https://ciscoacademy/que-son-las-redes.html"},
+  {title: '¿Qué es un router?', href: "https://ciscoacademy/que-es-un-router.html"},
+]
 
 const ModalDetails = props => {
 
@@ -13,16 +28,18 @@ const ModalDetails = props => {
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
     >
       <Box sx={modalStyle}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
+        <div className="bg-white">
+          <h1 className="text-3xl text-indigo-900 mb-4 font-medium">Redes I</h1>
+          <h2>Una red informática, una red de comunicaciones de datos o una red de computadoras es la interconexión de distinto número de sistemas informáticos a través de una serie de dispositivos de telecomunicaciones y un medio físico (alámbrico o inalámbrico).
+          </h2>
+          <div className="h-48 m-6 overflow-auto overflow-x-hidden">
+            {srcs.map(src => {
+              return <TableElement src={src} />
+            })}
+          </div>
+        </div>
       </Box>
     </Modal>
   );
@@ -33,7 +50,6 @@ const modalStyle = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
