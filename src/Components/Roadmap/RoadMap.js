@@ -25,7 +25,7 @@ const RoadMap = (props) => {
 
   return (
     <div style={{ width: "100%", height: "80vh" }} className="border-2 border-gray-400 rounded-xl flex flex-col h-full w-full items-center">
-      <h2 className="">{escuela.name}</h2>
+      <h2 className="text-indigo-900 text-2xl font-medium">{escuela.name}</h2>
       <ReactFlow
         nodes={nodes}
         edges={edges}

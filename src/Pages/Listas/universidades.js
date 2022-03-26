@@ -93,7 +93,7 @@ function Universidades(props) {
     const response = await obtenerUniversidadesAsync();
     setUniversidades(response.ok ? response.data : []);
   }, []);
-  
+
   return (
     <div className="w-screen h-full flex bg-white flex-col">
       <Nav />
@@ -128,11 +128,11 @@ function Universidades(props) {
                 <ul>
                   {carreras.map((carrera, i) => {
                     // return <ModalLi career={carrera.name} key={`key-${i}`} />
-                    return <Link
+                    return <li className="mb-4  text-indigo-600 font-bold"><Link
                       to={`/roadmap?id=${carrera.id}`}
                       key={`key-${i}`}>
                       {carrera.name}
-                    </Link>
+                    </Link></li>
                   })}
                 </ul>
               </div>

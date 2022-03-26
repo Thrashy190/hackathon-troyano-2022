@@ -22,7 +22,7 @@ function Input(props) {
 
 function Li(props) {
     return (
-        <li className="h-12 font-medium">{props.children}</li>
+        <li className="w-48 h-12 m-4 font-medium hover:bg-indigo-600 hover:text-white hover:rounded-md transition-all cursor-pointer flex justify-center items-center">{props.children}</li>
     )
 }
 
