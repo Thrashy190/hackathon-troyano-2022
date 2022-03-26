@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { FaMapMarkerAlt } from "react-icons/fa";
 // import { useAuth } from "../../contexts/authContext";
@@ -14,8 +14,10 @@ function Li(props) {
     props.label
   );
   return (
-    <li className={`text-white list-none inline-block mx-5 text ${underline}`}>
-      <Link to={props.to}>{content}</Link>
+    <li
+      className={`text-white list-none inline-block mx-5 hover:text-indigo-900`}
+    >
+      <NavLink to={props.to}>{content}</NavLink>
     </li>
   );
 }
@@ -39,9 +41,11 @@ function Nav() {
 
   return (
     <nav className="w-full h-20 bg-indigo-600 flex justify-around items-center">
-      <div className="text-white mr-3">
-        <FaMapMarkerAlt size={40} />
-      </div>
+      <Link to={"/"}>
+        <div className="text-white mr-3">
+          <FaMapMarkerAlt size={40} />
+        </div>
+      </Link>
 
       {estado === "Anonimo" ? (
         <ul className="w-3/4 flex justify-end items-center">

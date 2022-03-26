@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { FaMapMarkerAlt } from "react-icons/fa";
+
 // import { useAuth } from "../../contexts/authContext";
 
 function Li(props) {
@@ -14,8 +15,12 @@ function Li(props) {
     props.label
   );
   return (
-    <li className={`text-white list-none inline-block mx-5 text ${underline}`}>
-      <Link to={props.to}>{content}</Link>
+    <li
+      className={`text-white list-none inline-block mx-5  hover:text-indigo-900`}
+    >
+      <NavLink to={props.to} className="">
+        {content}
+      </NavLink>
     </li>
   );
 }
@@ -38,40 +43,42 @@ function Nav() {
   ];
 
   return (
-    <nav className="w-full h-20 bg-transparent flex justify-around items-center">
-      <div className="text-white mr-3">
-        <FaMapMarkerAlt size={40} />
+    <nav className="w-full h-20  flex justify-between items-center grid-cols-[50%_50%] grid-rows-1">
+      <div className="text-indigo-600 ml-10">
+        <FaMapMarkerAlt size={50} />
       </div>
 
-      {estado === "Anonimo" ? (
-        <ul className="w-3/4 flex justify-end items-center">
-          {lis.map((li, i) => {
-            return (
-              <Li
-                label={li.title}
-                on={li.on}
-                button={li.button}
-                to={li.to}
-                key={`li-${i}`}
-              />
-            );
-          })}
-        </ul>
-      ) : (
-        <ul className="w-3/4 flex justify-end items-center">
-          {lisActiveUser.map((li, i) => {
-            return (
-              <Li
-                label={li.title}
-                on={li.on}
-                button={li.button}
-                to={li.to}
-                key={`li-${i}`}
-              />
-            );
-          })}
-        </ul>
-      )}
+      <div className="bg-indigo-600 w-[60%] h-full flex item-center justify-end">
+        {estado === "Anonimo" ? (
+          <ul className="w-3/4 flex justify-end items-center mr-20 ">
+            {lis.map((li, i) => {
+              return (
+                <Li
+                  label={li.title}
+                  on={li.on}
+                  button={li.button}
+                  to={li.to}
+                  key={`li-${i}`}
+                />
+              );
+            })}
+          </ul>
+        ) : (
+          <ul className="w-3/4 flex justify-end items-center mr-20 ">
+            {lisActiveUser.map((li, i) => {
+              return (
+                <Li
+                  label={li.title}
+                  on={li.on}
+                  button={li.button}
+                  to={li.to}
+                  key={`li-${i}`}
+                />
+              );
+            })}
+          </ul>
+        )}
+      </div>
     </nav>
   );
 }
