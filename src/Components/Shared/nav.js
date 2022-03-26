@@ -27,14 +27,14 @@ function Nav() {
   const lis = [
     { title: "Foros", on: true, button: false, to: "/foros" },
     { title: "Universidades", on: false, button: false, to: "/universidades" },
-    { title: "Registro", on: false, button: true, to: "/signin" },
+    { title: "Registro", on: false, button: true, to: "/login" },
     { title: "Inicio de Sesión", on: false, button: false, to: "/login" },
   ];
 
   const lisActiveUser = [
     { title: "Foros", on: true, button: false, to: "/foros" },
     { title: "Universidades", on: false, button: false, to: "/universidades" },
-    { title: "Perfil", on: false, button: true, to: "/" },
+    { title: "Perfil", on: false, button: true, to: "/perfil" },
   ];
 
   return (
@@ -44,7 +44,7 @@ function Nav() {
       </div>
 
       {estado === "Anonimo" ? (
-        <ul className="w-3/4 flex justify-end">
+        <ul className="w-3/4 flex justify-end items-center">
           {lis.map((li, i) => {
             return (
               <Li
@@ -58,7 +58,7 @@ function Nav() {
           })}
         </ul>
       ) : (
-        <ul className="w-3/4 flex justify-end">
+        <ul className="w-3/4 flex justify-end items-center">
           {lisActiveUser.map((li, i) => {
             return (
               <Li
