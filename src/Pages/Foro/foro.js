@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../../Components/Shared/nav";
 import Button from "@mui/material/Button";
 import { FaSearch } from "react-icons/fa";
@@ -19,6 +19,8 @@ function Clect(props) {
           label={props.def}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
+          onChange={props.handler}
+          name={props.def[0].toLowerCase()}
         >
           {props.options.map((option, i) => {
             return (
@@ -44,6 +46,7 @@ function Search(props) {
         id="input-with-sx"
         label="Buscar"
         variant="standard"
+        onChange={props.handler}
       />
     </div>
   );
@@ -70,9 +73,9 @@ function ForumElement(props) {
 
 function Foro(props) {
   const selects = [
-    { def: "Universidad", options: ["UAQ", "UNAM", "ETC"] },
-    { def: "Carrera", options: ["Informática", "Mecatróncica", "Sistemas"] },
-    { def: "Materia", options: ["Mate", "Ciencias", "Progra"] },
+    { def: "Universidad", options: ["UAQ", "ITS", "UNAM"] },
+    { def: "Carrera", options: ["Informática", "Mecatrónica", "Sistemas"] },
+    { def: "Asignatura", options: ["Mate", "Ciencias", "Progra"] },
   ];
 
   const fE = [
@@ -95,7 +98,7 @@ function Foro(props) {
     },
     {
       title: "tengo esta pregunta",
-      u: "UAQ",
+      u: "ITS",
       c: "Informática",
       a: "Progra",
       lI: "6h30",
@@ -103,9 +106,9 @@ function Foro(props) {
     },
     {
       title: "aliens en la uaq?",
-      u: "UAQ",
+      u: "ITS",
       c: "Informática",
-      a: "Progra",
+      a: "Ciencias",
       lI: "7h",
       r: 92,
     },
@@ -119,6 +122,18 @@ function Foro(props) {
     },
   ];
 
+  const [res, setRes] = useState(fE);
+
+  function handleChange(e) {
+    console.log(e.target.value);
+    setRes(fE.filter(el => el.title.toLowerCase().includes(e.target.value.toLowerCase())));
+  }
+
+  function handleFilter(e) {
+    
+    setRes(fE.filter(el => el[e.target.name].includes(e.target.value)));
+  }
+
   return (
     <div className="w-screen h-full flex bg-white flex-col">
       <Nav />
@@ -128,9 +143,9 @@ function Foro(props) {
             ¿Sobre que te gustaría hablar hoy?
           </h1>
           <div className="w-full">
-            <Search />
+            <Search handler={handleChange}/>
             <div className="p-5 flex justify-center items-center flex-col">
-              {fE.map((info, i) => {
+              {res.map((info, i) => {
                 return <ForumElement info={info} key={`key-${i}`} />;
               })}
             </div>
@@ -144,10 +159,10 @@ function Foro(props) {
                 def={select.def}
                 options={select.options}
                 key={`select-${i}`}
+                handler={handleFilter}
               />
             );
           })}
-          <Button variant="contained">Buscar</Button>
         </div>
       </div>
     </div>
