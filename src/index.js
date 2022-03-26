@@ -13,7 +13,6 @@ import MessagesForum from "./Pages/Foro/MessageForum";
 import RoadMap from "./Pages/RoadMap/RoadMapPage";
 import Universidades from "./Pages/Listas/universidades.js";
 import NM from "./Pages/Otros/404.js";
-import RoadMap from "./Pages/RoadMap/index.js"
 
 const theme = createTheme({
   palette: {
@@ -30,34 +29,6 @@ const theme = createTheme({
   },
 });
 
-const base_url = "https://hackathon-2022-b997c-default-rtdb.firebaseio.com/";
-
-// fetch(`${base_url}users.json`, {
-//   method: 'POST',
-//   headers: {
-//     'Accept': 'application/json',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     id: { "stringValue": 'dasdfasdfasdf' },
-//     carrera: { "stringValue": 'sof18' },
-//     email: { "stringValue": 'galac.9175@gmail.com' },
-//     forumInteractions: { "stringValue": 'ola2s' },
-//     universidad: { "stringValue": 'uaq' },
-//     userName: { "stringValue": 'oz2' },
-//   })
-// })
-//   .then(res => res.json())
-//   .then(data => {
-//     console.log(data);
-//   })
-
-// fetch(`${base_url}users.json`)
-// .then(res => res.json())
-//   .then(data => {
-//     console.log(data);
-//   })
-
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <BrowserRouter>
@@ -68,7 +39,6 @@ ReactDOM.render(
         <Route path="/login" element={<Login />} />
         <Route path="/roadmap" element={<RoadMap />} />
         <Route path="/registrar" element={<Login />} />
-        <Route path="/roadmap" element={<RoadMap />} />
         <Route path="/perfil" element={<User />} />
         <Route path="/config" element={<Config />} />
         <Route path="*" element={<NM />} />

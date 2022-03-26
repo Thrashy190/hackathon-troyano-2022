@@ -93,18 +93,7 @@ function Universidades(props) {
     const response = await obtenerUniversidadesAsync();
     setUniversidades(response.ok ? response.data : []);
   }, []);
-
-<<<<<<< HEAD
-    return (
-        <div className="w-screen h-full flex bg-white flex-col">
-            <Nav />
-            <div className="flex items-center flex-col">
-                <div className="w-[80%] h-16 border-[1px] border-gray-400 mt-4 rounded-xl flex justify-around items-center">
-                    <Clect def={selects[0].def} options={selects[0].options} />
-                    <Clect def={selects[1].def} options={selects[1].options} />
-                    <Button variant="contained" color="primary">Buscar</Button>
-=======
-
+  
   return (
     <div className="w-screen h-full flex bg-white flex-col">
       <Nav />
@@ -124,7 +113,6 @@ function Universidades(props) {
                   onClick={(e) => handleChange(uni.id)}>
                   <img className="rounded-md brightness-50 h-full" src={uni.imgCover} />
                   <h1 className="text-white absolute text-center font-bold">{uni.name}</h1>
->>>>>>> 4bf6b2e6fa9728e88a8984b9ab9de13d2844a70c
                 </div>
               })
             }
