@@ -15,6 +15,7 @@ const RoadMap = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const { data } = props;
+
   const [initialNodes, initialEdges] = getFlowItems(data);
   const onNodeClick = (_) => setShowModal(true);
   const { roadMap, ...escuela } = data;
