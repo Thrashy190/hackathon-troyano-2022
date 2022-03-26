@@ -40,7 +40,8 @@ const LoginComponent = ({ setViewLogin }) => {
         }
         else {
           localStorage.setItem('key', data.refreshToken);
-          // window.location.href = "/";
+          localStorage.setItem('uid', email);
+          window.location.href = "/";
         }
       })
   }

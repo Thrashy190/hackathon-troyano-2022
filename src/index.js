@@ -27,32 +27,33 @@ const theme = createTheme({
   },
 });
 
-fetch('https://firestore.googleapis.com/v1/projects/hackathon-2022-b997c/databases/(default)/documents/users/fEoMql2cKqit7ztivHEK')
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-  })
+const base_url = "https://hackathon-2022-b997c-default-rtdb.firebaseio.com/";
 
-fetch('https://firestore.googleapis.com/v1/projects/hackathon-2022-b997c/databases/(default)/documents/users', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    fields: {
-      carrera: {"stringValue": 'sof18'},
-      email: {"stringValue": 'galac.9175@gmail.com'},
-      forumInteracions: {"stringValue": 'ola2s'},
-      universidad: {"stringValue": 'uaq'},
-      userName: {"stringValue": 'oz2'},
-    }
-  })
-})
-.then(res => res.json())
-  .then(data => {
-    console.log(data);
-  })
+// fetch(`${base_url}users.json`, {
+//   method: 'POST',
+//   headers: {
+//     'Accept': 'application/json',
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//     id: { "stringValue": 'dasdfasdfasdf' },
+//     carrera: { "stringValue": 'sof18' },
+//     email: { "stringValue": 'galac.9175@gmail.com' },
+//     forumInteractions: { "stringValue": 'ola2s' },
+//     universidad: { "stringValue": 'uaq' },
+//     userName: { "stringValue": 'oz2' },
+//   })
+// })
+//   .then(res => res.json())
+//   .then(data => {
+//     console.log(data);
+//   })
+
+// fetch(`${base_url}users.json`)
+// .then(res => res.json())
+//   .then(data => {
+//     console.log(data);
+//   })
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
