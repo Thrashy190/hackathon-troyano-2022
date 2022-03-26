@@ -3,6 +3,9 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
+
+const base_url = "https://hackathon-2022-b997c-default-rtdb.firebaseio.com/";
+
 const RegisterComponent = ({ setViewLogin }) => {
   const handleChange = () => {
     setViewLogin(true);
@@ -41,8 +44,6 @@ const RegisterComponent = ({ setViewLogin }) => {
             localStorage.setItem('key', data.refreshToken);
             localStorage.setItem('uid', email);
 
-            const base_url = "https://hackathon-2022-b997c-default-rtdb.firebaseio.com/";
-
             console.log(data.user_id)
             fetch(`${base_url}users.json`, {
               method: 'POST',
@@ -51,41 +52,17 @@ const RegisterComponent = ({ setViewLogin }) => {
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                carrera: { "stringValue": '' },
-                email: { "stringValue": email },
-                forumInteractions: { "stringValue": '' },
-                universidad: { "stringValue": '' },
-                userName: { "stringValue": name },
+                carrera:  '' ,
+                email:  email,
+                forumInteractions: '',
+                universidad: '',
+                userName: name,
               })
             })
               .then(r => r.json())
               .then(d => {
-                console.log(d);
+                localStorage.setItem('id', d.name);
               })
-
-            // fetch('https://firestore.googleapis.com/v1/projects/hackathon-2022-b997c/databases/(default)/documents/users/', {
-            //   method: 'POST',
-            //   headers: {
-            //     'Accept': 'application/json',
-            //     'Content-Type': 'application/json'
-            //   },
-            //   body: JSON.stringify({
-            //     fields: {
-            //       id: { "stringValue": data.user_id },
-            //       email: { "stringValue": email },
-            //       userName: { "stringValue": name },
-            //       carrera: { "stringValue": 'default' },
-            //       universidad: { "stringValue": 'default' },
-            //     }
-            //   })
-            // })
-            //   .then(r => r.json())
-            //   .then(d => {
-            //     if (d.error) {
-            //       console.log(d);
-            //       setState('Hubo un error.');
-            //     }
-            //   })
             // window.location.href = "/";
           }
         })

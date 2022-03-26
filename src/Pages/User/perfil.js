@@ -6,12 +6,22 @@ import { Link } from 'react-router-dom';
 
 function User() {
     const [account, setAccount] = useState();
+    const [uni, setUni] = useState();
+    const [career, setCareer] = useState();
+
+    function setData(data) {
+        setAccount(data.userName);
+        setUni(data.universidad);
+        setCareer(data.carrera);
+    }
+
     fetch('https://hackathon-2022-b997c-default-rtdb.firebaseio.com/users.json')
         .then(res => res.json())
         .then(data => {
             const email = localStorage.getItem('uid');
             Object.keys(data).map(d => {
-                data[d].email.stringValue == email && setAccount(data[d].userName.stringValue);
+                data[d].email == email && setData(data[d]);
+                console.log(account);
             });
         })
 
@@ -36,8 +46,8 @@ function User() {
                         </div>
                         <div className="text-indigo-900">
                             <h1 className="font-medium text-2xl">{account}</h1>
-                            <h2>Universidad Autónoma de Querétaro</h2>
-                            <h2>Ingeniería en Software</h2>
+                            <h2>{uni}</h2>
+                            <h2>{career}</h2>
                         </div>
                     </div>
                     <h1 className="font-medium text-2xl text-right text-indigo-900">Últimas Interacciones</h1>
