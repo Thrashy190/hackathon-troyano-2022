@@ -7,10 +7,19 @@ import { AiFillStar } from "react-icons/ai";
 const Message = ({ messages, key }) => {
   const [isLiked, setIsliked] = useState(false);
   const [numLike, setNumLike] = useState(messages.likes);
+  const [addAnswer, setAddAnswer] = useState(messages.replay);
 
   const changeIcon = () => {
     isLiked ? setNumLike(numLike - 1) : setNumLike(numLike + 1);
     setIsliked(!isLiked);
+  };
+
+  const template = {
+    user: "",
+    dateTime: "",
+    likes: 0,
+    mainMessages: "",
+    reply: [],
   };
 
   return (

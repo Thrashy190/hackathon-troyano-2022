@@ -178,7 +178,7 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="w-full h-[30%] flex justify-center items-center flex-col space-y-[5%] bg-indigo-600 mt-32">
+      <div className="w-full h-[30%] flex justify-center items-center flex-col  bg-indigo-600 mt-32">
         <img src={Logo} className="w-20 h-30 mt-4"></img>
         <h3 className="font-light text-[1vw] text-center text-white">
           Todos los derechos reservados 2022 / Avgi
